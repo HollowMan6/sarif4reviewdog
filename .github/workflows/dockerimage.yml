@@ -10,4 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ github.repository }}:$(date +%s)
+      run: |
+        NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+        docker build . --file Dockerfile --tag ${NAME}:$(date +%s)
