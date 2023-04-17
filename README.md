@@ -5,6 +5,13 @@
 [![release](https://github.com/HollowMan6/sarif4reviewdog/workflows/release/badge.svg)](https://github.com/HollowMan6/sarif4reviewdog/actions?query=workflow%3Arelease)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/HollowMan6/sarif4reviewdog?logo=github&sort=semver)](https://github.com/HollowMan6/sarif4reviewdog/releases)
 [![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
+
+[PR example](https://github.com/HollowMan6/sarif4reviewdog/pull/5)
+
+The [Static Analysis Results Interchange Format (SARIF)](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=sarif) is an industry standard format for the output of static analysis tools.
+
+[reviewdog](https://github.com/reviewdog/reviewdog) is an automated code review tool integrated with any code analysis tools regardless of programming language.
+
 ## Input
 
 ```yaml
@@ -80,19 +87,6 @@ Pushing tag manually by yourself also work.
 
 This action updates major/minor release tags on a tag push. e.g. Update v1 and v1.2 tag when released v1.2.3.
 ref: https://help.github.com/en/articles/about-actions#versioning-your-action
-
-### Lint - reviewdog integration
-
-This reviewdog action template itself is integrated with reviewdog to run lints
-which is useful for Docker container based actions.
-
-![reviewdog integration](https://user-images.githubusercontent.com/3797062/72735107-7fbb9600-3bde-11ea-8087-12af76e7ee6f.png)
-
-Supported linters:
-
-- [reviewdog/action-shellcheck](https://github.com/reviewdog/action-shellcheck)
-- [reviewdog/action-hadolint](https://github.com/reviewdog/action-hadolint)
-- [reviewdog/action-misspell](https://github.com/reviewdog/action-misspell)
 
 ### Dependencies Update Automation
 This repository uses [reviewdog/action-depup](https://github.com/reviewdog/action-depup) to update
