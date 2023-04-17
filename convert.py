@@ -80,7 +80,6 @@ for run in content["runs"]:
                         }
                     }
                 }
-                location["range"] = suggest["range"]
                 if "insertedContent" in replace:
                     suggest["text"] = replace["insertedContent"]["text"]
                 suggestions.append(suggest)
