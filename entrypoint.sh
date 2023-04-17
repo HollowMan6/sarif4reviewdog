@@ -3,7 +3,7 @@ set -e
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-/convert.py "${INPUT_FILE}" . \
+/convert.py "${INPUT_FILE}" \
   | reviewdog -f="rdjson" \
       -name="SARIF" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
