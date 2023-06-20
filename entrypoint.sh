@@ -3,7 +3,7 @@ set -e
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-./convert.py "${INPUT_FILE}" > /tmp/convert.json
+/convert.py "${INPUT_FILE}" > /tmp/convert.json
 
 while read -r line
 do
