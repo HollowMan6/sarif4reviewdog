@@ -11,7 +11,8 @@ for run in content["runs"]:
     tool = run["tool"]
     driver = tool["driver"]
     name = driver["name"]
-    informationUri = driver["informationUri"]
+    # If informationUri is not set, use a blank string
+    informationUri = driver["informationUri"] if "informationUri" in driver else ""
     rule = {}
     ruleLevel = {}
     rdjson["source"] = {
@@ -19,10 +20,13 @@ for run in content["runs"]:
         "url": informationUri
     }
     diagnostics = []
+    # if no rules, we can't do anything, so go to the next run
+    if "rules" not in driver:
+        continue
     for r in driver["rules"]:
         id = r["id"]
         description = "\n#### " + id + " "
-        level = r["defaultConfiguration"]["level"]
+        level = "warning"
         if level == "warning":
             level = "WARNING"
         elif level == "error":
@@ -46,12 +50,15 @@ for run in content["runs"]:
         #     description += result["message"]["text"] + "\n"
         sarifLocation = result["locations"][0]["physicalLocation"]
         path = sarifLocation["artifactLocation"]["uri"]
+        # If there's no range, we can't do anything. Go to the next result
+        if "region" not in sarifLocation:
+            continue
         location = {
             "path": path,
             "range": {
                 "start": {
                     "line": sarifLocation["region"]["startLine"],
-                    "column": sarifLocation["region"]["startColumn"]
+                    "column": sarifLocation["region"]["startColumn"] if "startColumn" in sarifLocation["region"] else 1
                 }
             }
         }
