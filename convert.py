@@ -26,7 +26,7 @@ for run in content["runs"]:
     for r in driver["rules"]:
         id = r["id"]
         description = "\n#### " + id + " "
-        level = "warning"
+        level = r["defaultConfiguration"]["level"] if "defaultConfiguration" in r and "level" in r["defaultConfiguration"] else "warning"
         if level == "warning":
             level = "WARNING"
         elif level == "error":
